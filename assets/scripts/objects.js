@@ -96,14 +96,14 @@ const person3 = {...person1, //makes deep copy of Top level
 person1.hobbies.pop()
 
 // console.log(anotherPerson)
-console.log('person1',person1);
-console.log('person2',person2);
-console.log('person3',person3);
+// console.log('person1',person1);
+// console.log('person2',person2);
+// console.log('person3',person3);
 
 // Objectassign
 
 const person4 = Object.assign({}, person1); //makes deep copy of Top level, shallow copy of Nested
 person1.name = 'Joe';
 person1.hobbies.push('Sleeping')
-console.log('person1',person1);
-console.log('person4',person4);
+// console.log('person1',person1);
+// console.log('person4',person4);
