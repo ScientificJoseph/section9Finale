@@ -54,6 +54,10 @@ const addMovieHandler = () => {
 
   movies.push(newMovie);
   renderMovies();
+  document.querySelectorAll('#user-input input').forEach((input) => {
+    return input.value = '';
+  })
+
 };
 
 const searchMovieHandler = () => {
