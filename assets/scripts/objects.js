@@ -67,3 +67,33 @@ const searchMovieHandler = () => {
 
 addMovieBtn.addEventListener('click', addMovieHandler);
 searchBtn.addEventListener('click', searchMovieHandler);
+
+// The Spread Operator
+
+const person = {
+  name: 'Joseph',
+  hobbies: ['Juicing', 'Music']
+};
+
+const anotherPerson = person; //shallow copy of object
+
+person.age = 50;
+
+const person2 = { ...person } //makes deep copy of Top level, shallow copy of nested
+
+person.age = 51;
+person.hobbies.push('Coding');
+
+const person3 = {...person, //makes deep copy of Top level
+  age: 49, //ovewrites original object age property
+  hobbies: [...person.hobbies] // makes deep copy of array
+};
+
+person.hobbies.pop()
+
+// console.log(anotherPerson)
+console.log('person',person);
+console.log('person2',person2);
+console.log('person3',person3)
+
+// Objectassign
