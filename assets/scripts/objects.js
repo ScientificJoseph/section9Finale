@@ -70,30 +70,36 @@ searchBtn.addEventListener('click', searchMovieHandler);
 
 // The Spread Operator
 
-const person = {
+const person1 = {
   name: 'Joseph',
   hobbies: ['Juicing', 'Music']
 };
 
-const anotherPerson = person; //shallow copy of object
+const anotherPerson = person1; //shallow copy of object
 
-person.age = 50;
+person1.age = 50;
 
-const person2 = { ...person } //makes deep copy of Top level, shallow copy of nested
+const person2 = { ...person1 }; //makes deep copy of Top level, shallow copy of nested
 
-person.age = 51;
-person.hobbies.push('Coding');
+person1.age = 51;
+person1.hobbies.push('Coding');
 
-const person3 = {...person, //makes deep copy of Top level
+const person3 = {...person1, //makes deep copy of Top level
   age: 49, //ovewrites original object age property
-  hobbies: [...person.hobbies] // makes deep copy of array
+  hobbies: [...person1.hobbies] // makes deep copy of array
 };
 
-person.hobbies.pop()
+person1.hobbies.pop()
 
 // console.log(anotherPerson)
-console.log('person',person);
+console.log('person1',person1);
 console.log('person2',person2);
-console.log('person3',person3)
+console.log('person3',person3);
 
 // Objectassign
+
+const person4 = Object.assign({}, person1); //makes deep copy of Top level, shallow copy of Nested
+person1.name = 'Joe';
+person1.hobbies.push('Sleeping')
+console.log('person1',person1);
+console.log('person4',person4);
