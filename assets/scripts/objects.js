@@ -29,7 +29,7 @@ const renderMovies = (filter = '') => {
     // getFormattedTitle = getFormattedTitle.bind(movie) //bind sets what this should refer to
     let text = getFormattedTitle.call(movie) + ' - ';
     for (const key in info) {
-      if (key !== 'title') {
+      if (key !== 'title' && key !== '_title') {
         text = text + `${key}: ${info[key]}`;
       }
     }
@@ -44,7 +44,7 @@ const addMovieHandler = () => {
   const extraValue = document.getElementById('extra-value').value;
 
   if (
-    title.trim() === '' ||
+    // title.trim() === '' ||
     extraName.trim() === '' ||
     extraValue.trim() === ''
   ) {
@@ -53,7 +53,17 @@ const addMovieHandler = () => {
 
   const newMovie = {
     info: {
-      title,
+      // title,
+      set title(val) {
+        if (val.trim() === '') {
+          this._title = 'DEFAULT'
+          return;
+        }
+        this._title = val;
+      },
+      get title() {
+        return this._title;
+      },
       [extraName]: extraValue
     },
     id: Math.random().toString(),
@@ -63,6 +73,9 @@ const addMovieHandler = () => {
     }
   };
 
+  newMovie.info.title = title;
+  console.log(newMovie.info.title)
+
   movies.push(newMovie);
   renderMovies();
   document.querySelectorAll('#user-input input').forEach((input) => {
@@ -71,7 +84,7 @@ const addMovieHandler = () => {
 
 };
 
-const searchMovieHandler = function() {
+const searchMovieHandler = () => {
   console.log('smh',this)
   const filterTerm = document.getElementById('filter-title').value;
   renderMovies(filterTerm);
@@ -115,3 +128,15 @@ person1.name = 'Joe';
 person1.hobbies.push('Sleeping')
 // console.log('person1',person1);
 // console.log('person4',person4);
+
+const members = {
+  teamName: 'The Tribe',
+  people: ['Joseph', 'Makeda'],
+  getTeamMembers(){
+    this.people.forEach((name) => {
+      console.log(`${name} - ${this.teamName}`)
+    })
+  }
+}
+
+members.getTeamMembers()
